@@ -1,0 +1,4 @@
+API Gemini: AIzaSyADkT3YJYHPR0l_F0OJTPvrzJOfF49t1UA
+Senha MongoDB: O5PsSC8T9hFxsOjV
+
+Conexão MongoDB: mongodb+srv://caio:O5PsSC8T9hFxsOjV@cluster0.zz6b4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
