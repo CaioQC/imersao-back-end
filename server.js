@@ -1,4 +1,7 @@
 import express from "express";
+import connectToDatabase from "./src/config/dbConfig.js";
+
+await connectToDatabase(process.env.STRING_CONEXAO)
 
 const posts = [
     { id: 1, descricao: "Uma foto teste", imagem: "https://placecats.com/millie/300/150" },
