@@ -1,31 +1,11 @@
 import express from "express";
-import connectToDatabase from "./src/config/dbConfig.js";
+import routes from "./src/routes/postsRoutes.js";
 
-await connectToDatabase(process.env.STRING_CONEXAO)
-
-const posts = [
-    { id: 1, descricao: "Uma foto teste", imagem: "https://placecats.com/millie/300/150" },
-    { id: 2, descricao: "Paisagem do Reino Unido", imagem: "https://placecats.com/millie/300/150" },
-    { id: 3, descricao: "Paisagem da Suiça", imagem: "https://placecats.com/millie/300/150" },
-    { id: 4, descricao: "Paisagem do Japão", imagem: "https://placecats.com/millie/300/150" },
-    { id: 5, descricao: "Paisagem da Grécia", imagem: "https://placecats.com/millie/300/150" },
-    { id: 6, descricao: "Paisagem de Montenegro", imagem: "https://placecats.com/millie/300/150" },
-];
-
+// Inicializa o servidor Express
 const app = express();
-app.use(express.json());
+routes(app);
 
+// Inicia o servidor na porta 3000
 app.listen(3000, () => {
-    console.log("Servidor escutando...");
-});
-
-function searchPostById(id){
-    return posts.findIndex((post) => {
-        return post.id === Number(id);
-    });
-};
-
-app.get("/posts/:id", (req, res) => {
-    const index = searchPostById(req.params.id);
-    res.status(200).json(posts[index]);
+  console.log("Servidor escutando...");
 });
