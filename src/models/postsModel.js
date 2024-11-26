@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import connectToDatabase from "../config/dbConfig.js";
 
 // Conecta ao banco de dados usando a string de conexão do ambiente
@@ -18,4 +19,11 @@ export async function createPost(newPost){
     const db = connection.db("imersao_dev");
     const collection = db.collection("imersao_dev");
     return collection.insertOne(newPost);
+}
+
+export async function updatePost(id, newPost){
+    const db = connection.db("imersao_dev");
+    const collection = db.collection("imersao_dev");
+    const objId = ObjectId.createFromHexString(id)
+    return collection.updateOne({_id : new ObjectId(objId)}, {$set:newPost});
 }
