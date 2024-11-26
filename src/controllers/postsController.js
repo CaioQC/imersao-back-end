@@ -1,3 +1,4 @@
+import fs from "fs";
 import {getAllPosts, createPost} from "../models/postsModel.js";
 
 export async function listPosts (req, res) {
@@ -21,9 +22,16 @@ export async function postNewPost(req, res){
 }
 
 export async function uploadImage(req, res){
-    const newPost = req.body;
+    const newPost = {
+        descricao : "",
+        url_imagem : req.file.originalname,
+        alt : ""
+    };
+
     try{
         const postCreated = await createPost(newPost);
+        const updatedImage = `uploads/${postCreated.insertedId}.png`
+        fs.renameSync(req.file.path, updatedImage);
         res.status(200).json(postCreated);
     }
 

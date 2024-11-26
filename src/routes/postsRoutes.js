@@ -10,9 +10,9 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, file.originalname);
     }
-})
+});
 
-const upload = multer({ dest: "./uploads" , storage})
+const upload = multer({ dest: "./uploads" , storage});
 
 const routes = (app) => {
     // Habilita o parser JSON para o servidor Express
@@ -21,8 +21,8 @@ const routes = (app) => {
     // Rota GET para obter todos os posts
     app.get("/posts", listPosts);
     // Rota para criar novos posts
-    app.post("/posts", postNewPost)
-    app.post("/upload", upload.single("image"), uploadImage)
-}
+    app.post("/posts", postNewPost);
+    app.post("/upload", upload.single("image"), uploadImage);
+};
 
 export default routes;
